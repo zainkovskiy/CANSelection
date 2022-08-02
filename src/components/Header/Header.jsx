@@ -1,37 +1,27 @@
-import React, { useContext } from "react";
+import React from "react";
 
-import Link from '@mui/material/Link';
-
-import { Context } from 'components/LayoutContext';
+import { Realtor } from 'components/Realtor';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 import './Header.scss';
 
 
 export function Header() {
-  const { data } = useContext(Context);
+  const mobileView = useMediaQuery('(min-width: 480px)')
 
-  return (<div className='header'>
-    <img className='header__logo' src="https://crm.centralnoe.ru/dealincom/assets/logo_can.jpg" alt="logo" />
-    <div className="header__realtor">
-      <span
-        className="text"
-        style={{ fontSize: '12px' }}
-      >
-        Ваш риелтор 
-      </span>
-      <span
-        className="text"
-        style={{ fontSize: '12px' }}
-      >
-        {data.realtor.name}
-      </span>
-      <Link
-        href={`tel:${data.realtor.phone}`}
-        underline="hover"
-        style={{ fontSize: '12px' }}
-      >
-        {data.realtor.phone}
-      </Link>
-    </div>
-  </div>)
+  return (
+    <div
+      className='header'
+      style={ !mobileView ? headerMobile : {} }
+    >
+      <img className='header__logo' src="https://crm.centralnoe.ru/dealincom/assets/logo_can.jpg" alt="logo" />
+      {
+        mobileView &&
+        <Realtor/>
+      }
+    </div>)
+}
+const headerMobile = {
+  padding: '0.5rem',
+  justifyContent: 'center'
 }

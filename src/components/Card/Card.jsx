@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 import Link from '@mui/material/Link';
+import Button from '@mui/material/Button';
 
-const placeholderImg = 'https://crm.centralnoe.ru/dealincom/assets/empty_photo.jpg';
+import { CarouselComponent } from 'components/CarouselComponent';
+import { LikeOrDislake } from 'components/LikeOrDislake';
 
 import './Card.scss';
 
@@ -29,9 +32,13 @@ const commetnVariants = {
   }
 }
 
-
 export function Card({ card }) {
   const [readMore, setReadMore] = useState(false);
+  const navigate = useNavigate();
+
+  const openFull = () => {
+      navigate(card.reqNumber)
+  }
 
   return (
     <>
@@ -43,11 +50,7 @@ export function Card({ card }) {
         exit='hidden'
         layout
       >
-        <img
-          alt="photo"
-          className='card__img'
-          src={card.photo[0] || placeholderImg}
-        />
+        <CarouselComponent photos={card.photo} />
         <div className='card__info'>
           <span className='text' style={{ height: 38 }}>
             {card?.address}
@@ -95,7 +98,19 @@ export function Card({ card }) {
             }
           </div>
           <div className='card__bottom_wrap'>
+            <div>
 
+              <LikeOrDislake
+                reqNumber={card.reqNumber}
+                likes={card.likes}
+                dislikes={card.dislikes}
+              />
+            </div>
+            <Button
+              onClick={openFull}
+            >
+              на карте
+            </Button>
           </div>
         </div>
       </motion.div>

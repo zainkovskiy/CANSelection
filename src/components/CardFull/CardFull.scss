@@ -1,0 +1,10 @@
+.full{
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  &__address{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
