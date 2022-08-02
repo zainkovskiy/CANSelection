@@ -27,14 +27,8 @@
     }
   }
 
-  &:hover {
-    -webkit-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
-    -moz-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
-    box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
-  }
-
   &__img {
-    object-fit: contain;
+    object-fit: cover;
     position: relative;
 
     &_error {
@@ -116,5 +110,13 @@
     background-size: 80%;
     background-position: center;
     background-repeat: no-repeat;
+  }
+}
+
+@media(min-width: 764px){
+  .card:hover {
+    -webkit-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+    -moz-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+    box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
   }
 }

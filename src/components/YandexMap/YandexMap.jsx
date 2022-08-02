@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { YMaps, Map, Placemark } from 'react-yandex-maps';
 
 export const YandexMap = ({ cords }) => {
@@ -12,7 +12,7 @@ export const YandexMap = ({ cords }) => {
           height={400}
           defaultState={{
             center: cords ? cords : [55.04, 82.93],
-            zoom: 9
+            zoom: 14,
           }}
         >
           <Placemark geometry={cords ? cords : [55.04, 82.93]} />

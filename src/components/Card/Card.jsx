@@ -2,13 +2,12 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
-import Link from '@mui/material/Link';
-import Button from '@mui/material/Button';
-
-import { CarouselComponent } from 'components/CarouselComponent';
+import { Photo } from 'components/Photo';
 import { LikeOrDislake } from 'components/LikeOrDislake';
 
 import './Card.scss';
+
+const placeholderImg = 'https://crm.centralnoe.ru/dealincom/assets/empty_photo.jpg';
 
 const cardVarints = {
   visible: {
@@ -21,23 +20,19 @@ const cardVarints = {
   }
 }
 
-const commetnVariants = {
-  full: {
-    height: 'auto',
-    transition: { duration: 0.5 }
-  },
-  start: {
-    height: '45px',
-    transition: { duration: 0.5 }
-  }
-}
-
 export function Card({ card }) {
-  const [readMore, setReadMore] = useState(false);
+  const [full, setFull] = useState(false)
   const navigate = useNavigate();
 
   const openFull = () => {
-      navigate(card.reqNumber)
+    const tagName = event.target.tagName;
+    if (full) {
+      return
+    }
+    if (tagName === 'INPUT' || tagName === 'svg' || tagName === 'BUTTON' || tagName === 'path' || tagName === 'polygon') {
+      return
+    }
+    navigate(card.reqNumber)
   }
 
   return (
@@ -49,8 +44,14 @@ export function Card({ card }) {
         animate='visible'
         exit='hidden'
         layout
+        onClick={openFull}
       >
-        <CarouselComponent photos={card.photo} />
+        <Photo
+          images={card.photo || [placeholderImg]}
+          full={full}
+          setFull={setFull}
+          minHeight={250}
+        />
         <div className='card__info'>
           <span className='text' style={{ height: 38 }}>
             {card?.address}
@@ -71,46 +72,13 @@ export function Card({ card }) {
               {(card?.price && card?.area && card?.area !== 'Земельный участок') && <span className='text card__text'>{((+card.price / +card.area) * 1000).toFixed(0)} ₽/кв.м</span>}
             </div>
           </div>
-          <div className='card__description'>
-            <div className='card__text-button'>
-              <span className='card__text text' style={{ fontWeight: 700, color: 'grey', marginRight: 30 }}>
-                Комментарий
-              </span>
-            </div>
-            <motion.span
-              className={`card__comment text card__text ${card?.comment?.length > 90 ? readMore ? '' : 'card__comment_hidden' : ''}`}
-              variants={commetnVariants}
-              animate={readMore ? 'full' : 'start'}
-              initial='start'
-            >
-              {card.comment || 'Коментарий отсутствует'}
-            </motion.span>
-            {
-              (card?.comment && card.comment.length > 90) ?
-                <Link
-                  onClick={() => setReadMore(!readMore)}
-                  underline="none"
-                  sx={{ fontSize: 12, fontFamily: 'Montserrat' }}
-                >
-                  {readMore ? 'Показать меньше' : 'Показать больше'}
-                </Link> :
-                <span style={{ height: 15 }}></span>
-            }
-          </div>
-          <div className='card__bottom_wrap'>
-            <div>
 
-              <LikeOrDislake
-                reqNumber={card.reqNumber}
-                likes={card.likes}
-                dislikes={card.dislikes}
-              />
-            </div>
-            <Button
-              onClick={openFull}
-            >
-              на карте
-            </Button>
+          <div className='card__bottom_wrap'>
+            <LikeOrDislake
+              reqNumber={card.reqNumber}
+              likes={card.likes}
+              dislikes={card.dislikes}
+            />
           </div>
         </div>
       </motion.div>

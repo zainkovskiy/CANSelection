@@ -10,6 +10,13 @@ import { CardFull } from 'components/CardFull';
 
 export const Layout = () => {
   const mobileView = useMediaQuery('(max-width: 480px)')
+  const container = {
+    maxWidth: '1170px',
+    margin: '0 auto',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: mobileView ? '0.5rem' : '1rem'
+  }
   return (
     <BrowserRouter>
       <div style={container}>
@@ -21,20 +28,12 @@ export const Layout = () => {
           }
           <Routes>
             {/* <Route path='dev/selection/' element={<Cards />}/> */}
-            <Route path='/' element={<Cards />}/>
-            <Route path='/:id' element={<CardFull/>}/>
-            <Route path='*' element={<span className="text">page not found</span>}/>
+            <Route path='dev/selection/' element={<Cards />} />
+            <Route path='dev/selection/:id' element={<CardFull />} />
+            <Route path='*' element={<span className="text">page not found</span>} />
           </Routes>
         </LayoutContext>
       </div>
     </BrowserRouter>
   )
-}
-
-const container = {
-  maxWidth: '1170px',
-  margin: '0 auto',
-  display: 'flex',
-  flexDirection: 'column',
-  gap: '1rem'
 }

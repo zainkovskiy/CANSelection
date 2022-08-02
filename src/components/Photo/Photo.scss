@@ -1,0 +1,20 @@
+@import "~react-image-gallery/styles/scss/image-gallery.scss";
+
+.image-gallery{
+  border: 1px solid #ccc;
+  border-radius: 5px 5px 0 0;
+}
+.image-gallery-left-nav .image-gallery-svg, .image-gallery-right-nav .image-gallery-svg {
+  height: 60px;
+  width: 30px;
+}
+.image-gallery-thumbnail-image{
+  height: 60px;
+  object-fit: cover;
+}
+.image-gallery_full > IMG{
+  object-fit: contain !important;
+}
+.image-gallery_small > IMG{
+  object-fit: cover !important;
+}
