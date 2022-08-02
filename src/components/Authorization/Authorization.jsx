@@ -64,7 +64,7 @@ export function Authorization({ confirmAuthorization }) {
           </span>
         </div>
         <Button
-          variant="outlined"
+          variant="contained"
           fullWidth
           type='submit'
         >

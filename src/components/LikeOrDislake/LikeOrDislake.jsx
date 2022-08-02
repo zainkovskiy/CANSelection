@@ -24,14 +24,14 @@ export const LikeOrDislake = ({ likes, dislikes, reqNumber }) => {
         checked={likes > 0}
         onClick={handlerEmotion}
         icon={<ThumbUpOutlinedIcon />}
-        checkedIcon={<ThumbUpIcon color='action' />}
+        checkedIcon={<ThumbUpIcon color='success' />}
       />
       <Checkbox
         name='dislikes'
         checked={dislikes > 0}
         onClick={handlerEmotion}
         icon={<ThumbDownAltOutlinedIcon />}
-        checkedIcon={<ThumbDownAltIcon color='action' />}
+        checkedIcon={<ThumbDownAltIcon color='error' />}
       />
     </>
   )

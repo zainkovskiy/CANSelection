@@ -37,7 +37,7 @@ export const CardFull = () => {
         className='full'
       >
         <Button
-          variant="outlined"
+          variant="contained"
           onClick={handlerClickToBack}
           size='medium'
         >
@@ -76,7 +76,7 @@ export const CardFull = () => {
             Описание
           </span>
           <span
-            className={`full__comment text card__text`}
+            className={`full__comment text`}
           >
             {card.comment || 'Описание отсутствует'}
           </span>

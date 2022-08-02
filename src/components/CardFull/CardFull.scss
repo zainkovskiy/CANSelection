@@ -19,6 +19,7 @@
     padding: 0.5rem;
     border: 1px solid #484848;
     border-radius: 5px;
+    font-size: 14px;
   }
 
   &__text_big {
@@ -64,7 +65,7 @@
   }
 
   .full__text_vertical {
-    width: 48%;
+    width: 45%;
   }
 }
 
@@ -74,5 +75,8 @@
   }
   .shot {
     grid-gap: 0.5rem;
+    &__information{
+      gap: 0.5rem;
+    }
   }
 }
