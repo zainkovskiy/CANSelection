@@ -33,7 +33,7 @@ export function Authorization({ confirmAuthorization }) {
       >
         <span
           className='text authorization__text'
-        >Введите номер телефона указаный в договоре</span>
+        >Введите номер телефона указанный в договоре</span>
         <div className='authorization__input'>
           <span
             className='text error'
