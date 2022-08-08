@@ -5,6 +5,8 @@ import { motion } from 'framer-motion';
 import { Photo } from 'components/Photo';
 import { LikeOrDislake } from 'components/LikeOrDislake';
 
+import { setView } from '../../Api';
+
 import './Card.scss';
 
 const placeholderImg = 'https://crm.centralnoe.ru/dealincom/assets/empty_photo.jpg';
@@ -33,6 +35,7 @@ export function Card({ card }) {
       return
     }
     navigate(card.UID)
+    setView(card.UID)
   }
 
   return (

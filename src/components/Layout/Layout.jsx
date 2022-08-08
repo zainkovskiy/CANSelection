@@ -27,10 +27,10 @@ export const Layout = () => {
             <Realtor />
           }
           <Routes>
-            {/* <Route path='dev/selection/' element={<Cards />} />
-            <Route path='dev/selection/:id' element={<CardFull />} /> */}
-            <Route path='/' element={<Cards />} />
-            <Route path='/:id' element={<CardFull />} />
+            <Route path='dev/selection/' element={<Cards />} />
+            <Route path='dev/selection/:id' element={<CardFull />} />
+            {/* <Route path='/' element={<Cards />} />
+            <Route path='/:id' element={<CardFull />} /> */}
             <Route path='*' element={<span className="text">page not found</span>} />
           </Routes>
         </LayoutContext>
