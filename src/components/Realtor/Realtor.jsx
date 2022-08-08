@@ -22,14 +22,14 @@ export const Realtor = () => {
         className="text"
         style={{ fontSize: '12px' }}
       >
-        {data.realtor.name}
+        {data.realtor}
       </span>
       <Link
-        href={`tel:${data.realtor.phone}`}
+        href={`tel:${data.realtorPhone}`}
         underline="hover"
         style={{ fontSize: '12px' }}
       >
-        {data.realtor.phone}
+        {data.realtorPhone}
       </Link>
     </div>
   )

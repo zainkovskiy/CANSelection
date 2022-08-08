@@ -7,8 +7,18 @@ export const checkPhone = async (phone) => {
   }
 }
 export const requestData = async () => {
-  const res = await axios.get('https://catfact.ninja/fact');
-  if (res.status === 200) {
-    return true
+  try {
+    const res = await axios.post('https://hs-01.centralnoe.ru/Project-Selket-Main/Servers/Filter/Selection.php', {
+      "action": "getStarted",
+      "phone": checkAutorization(),
+      "request": "69352"
+    });
+    return res?.data || null
+  } catch (err) {
+    return null
   }
+}
+
+function checkAutorization() {
+  return localStorage.getItem('authorization') || false;
 }

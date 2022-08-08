@@ -20,7 +20,7 @@ export const CardFull = () => {
   const mobileView = useMediaQuery('(max-width: 480px)')
   const [full, setFull] = useState(false)
 
-  const card = data.cards.find(card => card.reqNumber === params.id);
+  const card = data.data.find(card => card.UID === params.id);
 
   const navigate = useNavigate();
 

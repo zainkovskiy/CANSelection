@@ -32,7 +32,7 @@ export function Card({ card }) {
     if (tagName === 'INPUT' || tagName === 'svg' || tagName === 'BUTTON' || tagName === 'path' || tagName === 'polygon') {
       return
     }
-    navigate(card.reqNumber)
+    navigate(card.UID)
   }
 
   return (

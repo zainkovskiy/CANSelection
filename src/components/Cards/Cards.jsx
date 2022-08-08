@@ -14,9 +14,9 @@ export function Cards() {
       <motion.div layout className="cards" >
         <AnimatePresence>
           {
-            data.cards.map(card =>
+            data.data.map((card, idx) =>
               <Card
-                key={card.reqNumber}
+                key={card.UID}
                 card={card}
                 setNewEmotion={setNewEmotion}
               />
