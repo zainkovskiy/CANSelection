@@ -27,8 +27,15 @@ export const Layout = ({ resetAuthorization }) => {
             <Realtor />
           }
           <Routes>
-            <Route path='dev/selection/' element={<Cards />} />
-            <Route path='dev/selection/:id' element={<CardFull />} />
+            {/*prod*/}
+            <Route path='account/client/' element={<Cards />} />
+            <Route path='account/client/:id' element={<CardFull />} />
+
+            {/*dev*/}
+            {/* <Route path='dev/selection/' element={<Cards />} />
+            <Route path='dev/selection/:id' element={<CardFull />} /> */}
+
+            {/*dev/local*/}
             {/* <Route path='/' element={<Cards />} />
             <Route path='/:id' element={<CardFull />} /> */}
             <Route path='*' element={<span className="text">page not found</span>} />

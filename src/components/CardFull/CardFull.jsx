@@ -25,7 +25,7 @@ export const CardFull = () => {
   const navigate = useNavigate();
 
   const handlerClickToBack = () => {
-    navigate('/dev/selection/');
+    navigate('/account/client/');
   }
 
   return (
