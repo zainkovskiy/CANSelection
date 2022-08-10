@@ -78,7 +78,7 @@ export function Card({ card }) {
 
           <div className='card__bottom_wrap'>
             <LikeOrDislake
-              reqNumber={card.reqNumber}
+              UID={card.UID}
               likes={card.likes}
               dislikes={card.dislikes}
             />

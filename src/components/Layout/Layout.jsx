@@ -8,7 +8,7 @@ import { LayoutContext } from 'components/LayoutContext';
 import { Cards } from 'components/Cards';
 import { CardFull } from 'components/CardFull';
 
-export const Layout = () => {
+export const Layout = ({ resetAuthorization }) => {
   const mobileView = useMediaQuery('(max-width: 480px)')
   const container = {
     maxWidth: '1170px',
@@ -20,7 +20,7 @@ export const Layout = () => {
   return (
     <BrowserRouter>
       <div style={container}>
-        <LayoutContext>
+        <LayoutContext resetAuthorization={resetAuthorization}>
           <Header />
           {
             mobileView &&

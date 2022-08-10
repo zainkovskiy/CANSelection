@@ -59,7 +59,7 @@ export const CardFull = () => {
           <span className='full__text_big text'>{card.price} тыс. ₽</span>
           <div>
             <LikeOrDislake
-              reqNumber={card.reqNumber}
+              UID={card.UID}
               likes={card.likes}
               dislikes={card.dislikes}
             />

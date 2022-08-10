@@ -10,24 +10,24 @@ import Checkbox from '@mui/material/Checkbox';
 
 import { Context } from 'components/LayoutContext';
 
-export const LikeOrDislake = ({ likes, dislikes, reqNumber }) => {
+export const LikeOrDislake = ({ likes, dislikes, UID }) => {
   const { setNewEmotion } = useContext(Context);
 
   const handlerEmotion = () => {
-    setNewEmotion(reqNumber, event.target.name, event.target.checked)
+    setNewEmotion(UID, event.target.name, event.target.checked)
   }
 
   return (
     <>
       <Checkbox
-        name='likes'
+        name='isLike'
         checked={likes > 0}
         onClick={handlerEmotion}
         icon={<ThumbUpOutlinedIcon />}
         checkedIcon={<ThumbUpIcon color='success' />}
       />
       <Checkbox
-        name='dislikes'
+        name='isDislike'
         checked={dislikes > 0}
         onClick={handlerEmotion}
         icon={<ThumbDownAltOutlinedIcon />}

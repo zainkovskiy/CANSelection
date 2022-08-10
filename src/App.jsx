@@ -17,11 +17,18 @@ export function App() {
     localStorage.setItem('authorization', phone)
   }
 
+  const resetAuthorization = () => {
+    localStorage.clear();
+    setAuthorization(null);
+  }
+
   return (
     <>
       {
         authorization ?
-          <Layout /> :
+          <Layout
+            resetAuthorization={resetAuthorization}
+          /> :
           <Authorization
             confirmAuthorization={confirmAuthorization}
           />

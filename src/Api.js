@@ -8,10 +8,10 @@ export const checkPhone = async (phone) => {
 }
 
 export const setView = async (UID) => {
-    const res = await axios.post('https://hs-01.centralnoe.ru/Project-Selket-Main/Servers/Filter/Selection.php', {
-      "action": "viewed",
-      "UID": UID,
-    });
+  const res = await axios.post('https://hs-01.centralnoe.ru/Project-Selket-Main/Servers/Filter/Selection.php', {
+    "action": "viewed",
+    "UID": UID,
+  });
 }
 
 export const requestData = async () => {
@@ -19,12 +19,20 @@ export const requestData = async () => {
     const res = await axios.post('https://hs-01.centralnoe.ru/Project-Selket-Main/Servers/Filter/Selection.php', {
       "action": "getStarted",
       "phone": checkAutorization(),
-      "request": dealId || 69352
+      // "request": 69352,
+      "request": dealId || 69352,
     });
     return res?.data || null
   } catch (err) {
     return null
   }
+}
+
+export const sendEmotion = async (UID, emotion) => {
+  const res = await axios.post('https://hs-01.centralnoe.ru/Project-Selket-Main/Servers/Filter/Selection.php', {
+    "action": emotion,
+    "UID": UID,
+  });
 }
 
 function checkAutorization() {

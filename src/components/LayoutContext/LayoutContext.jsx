@@ -2,7 +2,7 @@ import React, { createContext, useState, useEffect } from 'react';
 
 import { Linear } from 'components/Linear';
 
-import { requestData } from '../../Api';
+import { requestData, sendEmotion } from '../../Api';
 
 export const Context = createContext();
 
@@ -17,17 +17,23 @@ export const LayoutContext = (props) => {
   const getData = () => {
     requestData().then(data => {
       console.log(data);
+      setLoading(false);
       if (data?.result === 'OK') {
         setData(data)
+        return
       }
-      setLoading(false);
+      if (data?.result === 'error' && data?.reason === "Exception on"){
+        props.resetAuthorization();
+        return
+      }
     })
   }
 
-  const setNewEmotion = (reqNumber, emotionName, emotionStatus) => {
-    const findCard = data.data.find(card => card.reqNumber === reqNumber);
+  const setNewEmotion = (UID, emotionName, emotionStatus) => {
+    const findCard = data.data.find(card => card.UID === UID);
     const cards = data.data;
-    if (emotionName === 'likes') {
+    sendEmotion(UID, emotionName);
+    if (emotionName === 'isLike') {
       findCard.likes = emotionStatus ? 1 : 0;
       findCard.dislikes = 0;
       cards.splice(data.data.indexOf(findCard), 1, findCard)
@@ -36,7 +42,7 @@ export const LayoutContext = (props) => {
       })
       return
     }
-    if (emotionName === 'dislikes') {
+    if (emotionName === 'isDislike') {
       findCard.dislikes = emotionStatus ? 1 : 0;
       findCard.likes = 0;
       cards.splice(data.data.indexOf(findCard), 1, findCard)
