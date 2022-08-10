@@ -19,7 +19,7 @@ export const requestData = async () => {
     const res = await axios.post('https://hs-01.centralnoe.ru/Project-Selket-Main/Servers/Filter/Selection.php', {
       "action": "getStarted",
       "phone": checkAutorization(),
-      "request": "69352"
+      "request": dealId || 69352
     });
     return res?.data || null
   } catch (err) {
