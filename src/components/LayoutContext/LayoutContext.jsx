@@ -25,20 +25,23 @@ export const LayoutContext = (props) => {
   }
 
   const setNewEmotion = (reqNumber, emotionName, emotionStatus) => {
-    const findCard = data.cards.find(card => card.reqNumber === reqNumber);
+    const findCard = data.data.find(card => card.reqNumber === reqNumber);
+    const cards = data.data;
     if (emotionName === 'likes') {
       findCard.likes = emotionStatus ? 1 : 0;
       findCard.dislikes = 0;
+      cards.splice(data.data.indexOf(findCard), 1, findCard)
       setData((prevState) => {
-        return { ...prevState, data: data.cards.splice(data.cards.indexOf(findCard), 1, findCard) }
+        return { ...prevState, data: cards }
       })
       return
     }
     if (emotionName === 'dislikes') {
       findCard.dislikes = emotionStatus ? 1 : 0;
       findCard.likes = 0;
+      cards.splice(data.data.indexOf(findCard), 1, findCard)
       setData((prevState) => {
-        return { ...prevState, data: data.cards.splice(data.cards.indexOf(findCard), 1, findCard) }
+        return { ...prevState, data: cards }
       })
       return
     }

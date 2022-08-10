@@ -2,7 +2,6 @@
 require_once($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/include/prolog_before.php");
 require_once($_SERVER["DOCUMENT_ROOT"]."/dealincom/class/iHelper.php");
 
-$placementOptions = isset($_REQUEST['PLACEMENT_OPTIONS']) ? json_decode($_REQUEST['PLACEMENT_OPTIONS'], true) : array();
 $ActiveUser = CUser::GetLogin();
 $ActiveUserID = CUser::GetID();
 
@@ -34,18 +33,9 @@ if (isset($_REQUEST['PLACEMENT']) && $_REQUEST['PLACEMENT'] == 'CRM_DEAL_DETAIL_
   <!-- <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,initial-scale=1"> -->
-  <?php
-  if (!$showFoot) {
-    $APPLICATION->ShowHead();
-  } else {
-    $APPLICATION->ShowHeadScripts();
-  }
 
-  // $APPLICATION->SetAdditionalCSS("/cardObject/main.css");
-  $APPLICATION->SetAdditionalCSS("/dev/compilation/main.css");
-  ?>
-  <script defer="defer" src="bundle.js?'.chr(rand(65,90)).chr(rand(65,90)).'='.rand(0,1000000).'"></script>
-  <!-- <link href="main.css?s=<?= rand(0, 1000000) ?>" rel="stylesheet"> -->
+  <script defer="defer" src="bundle-v1.0.js?<?echo(chr(rand(65,90)).chr(rand(65,90)).'='.rand(0,1000000));?>"></script>
+   <link href="main-v1.0.css?s=<?= rand(0, 1000000) ?>" rel="stylesheet">
   <script>
     let reqNumber = '<? echo ($reqNumber); ?>';
     let userId = '<? echo ($ActiveUserID); ?>';;
@@ -57,15 +47,9 @@ if (isset($_REQUEST['PLACEMENT']) && $_REQUEST['PLACEMENT'] == 'CRM_DEAL_DETAIL_
 
 <body>
   <?php
-  if ($showFoot) {
-    echo ('<SCRIPT>BX.remove(BX.findParent(uiToolbarContainer,{className :"bx-layout-inner-inner-cont"})) </SCRIPT>');
-  }
-  CJSCore::Init(['ui', 'sidepanel', 'jquery2']);
+
   echo ('<div id="root"></div>');
-  if ($showFoot) {
-    require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php");
-  }
-  $APPLICATION->ShowCSS(false, false);
+
   ?>
 </body>
 
