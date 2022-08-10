@@ -32,7 +32,7 @@ export const LayoutContext = (props) => {
   const setNewEmotion = (UID, emotionName, emotionStatus) => {
     const findCard = data.data.find(card => card.UID === UID);
     const cards = data.data;
-    sendEmotion(UID, emotionName);
+    sendEmotion(UID, emotionName, emotionStatus);
     if (emotionName === 'isLike') {
       findCard.likes = emotionStatus ? 1 : 0;
       findCard.dislikes = 0;

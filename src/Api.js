@@ -28,10 +28,11 @@ export const requestData = async () => {
   }
 }
 
-export const sendEmotion = async (UID, emotion) => {
+export const sendEmotion = async (UID, emotion, clear) => {
   const res = await axios.post('https://hs-01.centralnoe.ru/Project-Selket-Main/Servers/Filter/Selection.php', {
     "action": emotion,
     "UID": UID,
+    "isClear": !clear
   });
 }
 
