@@ -50,7 +50,7 @@ export function Card({ card }) {
         onClick={openFull}
       >
         <Photo
-          images={card.photo || [placeholderImg]}
+          images={(card.photo && card.photo.length > 0) ? card.photo : [placeholderImg]}
           full={full}
           setFull={setFull}
           minHeight={250}
