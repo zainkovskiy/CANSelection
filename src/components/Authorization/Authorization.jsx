@@ -17,13 +17,14 @@ export function Authorization({ confirmAuthorization }) {
   } = useForm()
 
   const onSubmit = (data) => {
-    checkPhone(data).then(answer => {
-      if (answer.result === 'ok') {
-        confirmAuthorization(data.phone);
-        return
-      }
-      setNoLogin(true);
-    });
+    // checkPhone(data).then(answer => {
+    //   if (answer.result === 'ok') {
+    //     confirmAuthorization(data.phone);
+    //     return
+    //   }
+    //   setNoLogin(true);
+    // });
+    confirmAuthorization(data.phone);
   }
   return (
     <div className='authorization'>
