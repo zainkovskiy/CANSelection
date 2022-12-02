@@ -37,5 +37,5 @@ export const sendEmotion = async (UID, emotion, clear) => {
 }
 
 function checkAutorization() {
-  return localStorage.getItem('authorization') || false;
+  return localStorage.getItem('authorizationPhone') || false;
 }
